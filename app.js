@@ -1,45 +1,55 @@
-var noteTitle = document.getElementById("title-btn")
-var noteDescription = document.getElementById("descr-btn")
-var cards = document.getElementById("cards-to-be-added")
+let noteTitle = document.getElementById("title-btn")
+let noteDescription = document.getElementById("descr-btn")
+let cards = document.getElementById("cards-to-be-added")
+let newNote = document.getElementById("addbtn")
+let delNote = document.getElementById("deletebtn")
 
 
-let addnote = () => {
+newNote.addEventListener('click' , () => {
 
     if (noteTitle.value === "" && noteDescription.value === "") {
         alert("The Title or Description is incorrect or empty!")
     } else {
-        var newNoteCard = document.createElement('div')
+        let newNoteCard = document.createElement('div')
         newNoteCard.classList.add("card")
         newNoteCard.classList.add("card-custom")
         newNoteCard.style = "width: 18rem"
         console.log(newNoteCard)
 
-        var cardBody = document.createElement("div")
+        let cardBody = document.createElement("div")
         cardBody.classList.add("card-body")
 
-        var newTitle = document.createElement("h5")
+        let newTitle = document.createElement("h5")
         newTitle.innerText = noteTitle.value
         newTitle.classList.add("card-title")
         newNoteCard.appendChild(newTitle)
         noteTitle.value = ""
 
-        var newDescription = document.createElement("p")
+        let newDescription = document.createElement("p")
         newDescription.innerText = noteDescription.value
         newDescription.classList.add("card-text")
         newNoteCard.appendChild(newDescription)
         noteDescription.value = ""
 
-        var deleteBtn = document.createElement("a")
-        deleteBtn.innerHTML = "<i class = 'fas fa-minus-circle'></i>"
-        deleteBtn.classList.add("myButton")
+        let deleteBtn = document.createElement("a")
+        deleteBtn.innerHTML = "<i class = 'fas fa-minus-circle'>Delete</i>"
+        deleteBtn.style.textDecoration = "none"
+        deleteBtn.style.color = "black"
+        deleteBtn.style.borderBottom = "2px solid black"
+        deleteBtn.style.margin = "5px"
+        deleteBtn.style.cursor = "pointer"
         newNoteCard.appendChild(deleteBtn)
 
-        var completedBtn = document.createElement("a")
-        completedBtn.innerHTML = "<i class = 'fas fa-check'></i>"
-        completedBtn.classList.add("myButton")
+        let completedBtn = document.createElement("a")
+        completedBtn.innerHTML = "<i class = 'fas fa-check'>Completed</i>"
+        completedBtn.style.textDecoration = "none"
+        completedBtn.style.color = "black"
+        completedBtn.style.borderBottom = "2px solid black"
+        completedBtn.style.margin = "5px"
+        completedBtn.style.cursor = "pointer"
         newNoteCard.appendChild(completedBtn)
 
-        var buttonsDiv = document.createElement("div")
+        let buttonsDiv = document.createElement("div")
         buttonsDiv.appendChild(deleteBtn)
         buttonsDiv.appendChild(completedBtn)
         newNoteCard.appendChild(buttonsDiv)
@@ -60,8 +70,8 @@ let addnote = () => {
     }
 
 
-}
+} ) 
 
-let delAll = () => {
+delNote.addEventListener ('click', () => {
     cards.innerHTML = ""
-}
+})
